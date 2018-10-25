@@ -2,6 +2,7 @@ package com.hjc.demo.mybatisplusdemo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hjc.demo.mybatisplusdemo.entity.User;
+import org.apache.ibatis.annotations.Select;
 
 /**
  * @author : Administrator
@@ -9,4 +10,7 @@ import com.hjc.demo.mybatisplusdemo.entity.User;
  * @description :
  */
 public interface UserMapper extends BaseMapper<User> {
+
+    @Select("select * from user where id =1")
+    User getUser();
 }
