@@ -48,7 +48,7 @@ public class AutoGeneratorHelper {
         gc.setActiveRecord(true);// 开启 activeRecord 模式
         gc.setEnableCache(false);// XML 二级缓存
         gc.setBaseResultMap(true);// XML ResultMap
-        gc.setBaseColumnList(false);// XML columList
+        gc.setBaseColumnList(true);// XML columList
         gc.setAuthor(rb.getString("author"));
         mpg.setGlobalConfig(gc);
 
