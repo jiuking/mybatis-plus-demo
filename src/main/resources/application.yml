@@ -7,3 +7,11 @@ spring:
 
 mybatis-plus:
     mapper-locations: classpath*:/mapper/**Mapper.xml
+    typeAliasesPackage: com.hjc.demo.mybatisplusdemo
+    configuration:
+        auto-mapping-behavior: partial
+    global-config:
+        id-type: 0
+        db-config:
+            logic-delete-value: -1 # 逻辑已删除值(默认为 1)
+            logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)

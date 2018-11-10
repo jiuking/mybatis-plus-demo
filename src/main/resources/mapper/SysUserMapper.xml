@@ -3,7 +3,7 @@
 <mapper namespace="com.hjc.demo.mybatisplusdemo.test.dao.Test.SysUserMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.hjc.demo.mybatisplusdemo.test.model.Test.SysUser">
+    <resultMap id="sysUserMapper" type="com.hjc.demo.mybatisplusdemo.test.model.Test.SysUser">
         <id column="id" property="id" />
         <result column="avatar" property="avatar" />
         <result column="account" property="account" />
@@ -35,5 +35,14 @@
         <![CDATA[
             SELECT *  FROM (${value}) obj
           ]]>
+    </select>
+
+    <select id="selectById11" parameterType="string" resultMap="sysUserMapper">
+      select * from sys_user where id = 1234
+    </select>
+
+    <select id="selectByWrapper" resultMap="sysUserMapper">
+
+            ${ew.sqlSegment}
     </select>
 </mapper>

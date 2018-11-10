@@ -1,8 +1,8 @@
 package com.hjc.demo.mybatisplusdemo.test.model.Test;
 
-import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.time.LocalDateTime;
 import java.io.Serializable;
 
@@ -14,6 +14,7 @@ import java.io.Serializable;
  * @author hjc
  * @since 2018-10-28
  */
+@TableName(value="sys_user",resultMap = "sysUserMapper")
 public class SysUser extends Model<SysUser> {
 
     private static final long serialVersionUID = 1L;
@@ -21,7 +22,7 @@ public class SysUser extends Model<SysUser> {
     /**
      * 主键id
      */
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id")
     private Integer id;
 
     /**
@@ -92,7 +93,12 @@ public class SysUser extends Model<SysUser> {
     /**
      * 保留字段
      */
+    @Version
     private Integer version;
+
+    @TableLogic
+    @TableField(exist = false)
+    private Integer deleted;
 
 
     public Integer getId() {

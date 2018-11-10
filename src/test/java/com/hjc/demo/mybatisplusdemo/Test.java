@@ -1,5 +1,7 @@
 package com.hjc.demo.mybatisplusdemo;
 
+import com.google.common.base.Objects;
+
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -94,10 +96,12 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        union();
-        intersection();
-        diff();
-        test();
+//        union();
+//        intersection();+
+//        diff();
+//        test();
+        System.out.println(null == null);
+        System.out.println(Objects.equal(null,null));
     }
     /**
      * Description: 内部学生类<br>
