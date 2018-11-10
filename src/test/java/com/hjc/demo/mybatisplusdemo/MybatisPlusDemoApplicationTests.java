@@ -113,7 +113,9 @@ public class MybatisPlusDemoApplicationTests {
 //        Set<SysUser> list = sysUserMapper.selectByWrapper(queryWrapper);
 //        list.forEach(temp -> System.out.println(temp.getName()));
         QueryWrapper<SysUser> entityWrapper = new QueryWrapper();
-        entityWrapper.eq("id","1234").eq("name","12");
+        entityWrapper.eq("id","1234");
+        entityWrapper.eq("name","12");
+        entityWrapper.and(wrapper -> wrapper.eq("name", "sdd"));
         sysUserService.list(entityWrapper).forEach(temp -> System.out.println(temp));
 
     }
