@@ -25,6 +25,10 @@ public class GuavaSet {
         }};
 
         List<String> list = new ArrayList<>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+        list.add("sadf");
 //        list.retainAll(list)  取出存在的id，设置到新的对象中。
         list1.stream().filter(temp -> list2.contains(temp)).collect(Collectors.toList());
 
@@ -43,6 +47,23 @@ public class GuavaSet {
         System.out.println(list1);
 
         Sets.difference(new HashSet<>(), new HashSet<>());
+        for (int i = 0; i <3 ; i++) {
+
+            list.forEach(tem -> {
+                if (tem.equals("a")) {
+                    return;
+                }
+                System.out.println(tem);
+            });
+            System.out.print(i);
+        }
+        List<String> list4 = new ArrayList<>();
+//        String[] a = list.toArray(new String[list.size()]);
+        String[] a = list4.stream().toArray(String[]::new);
+        System.out.println("====");
+        for (int i = 0; i < a.length; i++) {
+            System.out.println(a[i]);
+        }
 
         Set<Integer> set1=Sets.newHashSet(1,2,3,4,5,6);
         Set<Integer> set2=Sets.newHashSet(3,4,5,6,7,8,9);

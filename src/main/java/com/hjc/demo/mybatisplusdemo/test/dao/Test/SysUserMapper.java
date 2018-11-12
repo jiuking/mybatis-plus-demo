@@ -1,9 +1,13 @@
 package com.hjc.demo.mybatisplusdemo.test.dao.Test;
 
-import com.hjc.demo.mybatisplusdemo.test.model.Test.SysUser;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import com.baomidou.mybatisplus.core.toolkit.Constants;
+import com.hjc.demo.mybatisplusdemo.test.model.Test.SysUser;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+import java.util.Set;
 
 /**
  * <p>
@@ -15,10 +19,13 @@ import org.apache.ibatis.annotations.Select;
  */
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
-//    @Select("select t1.sql from sqlTable t1 where id = '1'")
+    //    @Select("select t1.sql from sqlTable t1 where id = '1'")
     String getSqlTable();
 
-//    @Select("SELECT *  FROM (${value}) obj")
+    //    @Select("SELECT *  FROM (${value}) obj")
     String getBySql(String value);
 
+    List<SysUser> selectById11();
+
+    Set<SysUser> selectByWrapper(@Param(Constants.WRAPPER)Wrapper<?> tWrapper);
 }
