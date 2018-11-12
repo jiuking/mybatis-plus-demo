@@ -1,11 +1,11 @@
 package com.hjc.demo.mybatisplusdemo;
 
-import org.quartz.CalendarIntervalScheduleBuilder;
-import org.quartz.CalendarIntervalTrigger;
-import org.quartz.Trigger;
+import org.quartz.*;
+import org.quartz.impl.StdSchedulerFactory;
 
 import java.util.Date;
 
+import static org.quartz.JobBuilder.newJob;
 import static org.quartz.SimpleScheduleBuilder.simpleSchedule;
 import static org.quartz.TriggerBuilder.newTrigger;
 
@@ -15,15 +15,21 @@ import static org.quartz.TriggerBuilder.newTrigger;
  * @description :
  */
 public class SchdualQuartz {
-    public static void main(String[] args) {
-        Trigger trigger = newTrigger().withIdentity("trigger1", "group1") //定义name/group
-                .startNow()//一旦加入scheduler，立即生效
-                .withSchedule(simpleSchedule() //使用SimpleTrigger
-                        .withIntervalInSeconds(1) //每隔一秒执行一次
-                        .repeatForever()) //一直执行，奔腾到老不停歇
+    public static void main(String[] args) throws SchedulerException {
+        //创建scheduler
+        Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+        Trigger trigger1 = newTrigger().startAt(new Date()).withSchedule(CalendarIntervalScheduleBuilder.calendarIntervalSchedule().withIntervalInSeconds(50)).build();
+
+        //定义一个JobDetail
+        JobDetail job = newJob(HelloQuartz.class) //定义Job类为HelloQuartz类，这是真正的执行逻辑所在
+                .withIdentity("job1", "group1") //定义name/group
+                .usingJobData("name", "quartz") //定义属性
                 .build();
-        CalendarIntervalScheduleBuilder calendarIntervalScheduleBuilder = null;
-        Trigger trigger1 = newTrigger().startAt(new Date()).withSchedule(CalendarIntervalScheduleBuilder.calendarIntervalSchedule().withIntervalInDays(50)).build();
-        CalendarIntervalTrigger trigger2;
+
+        //加入这个调度
+        scheduler.scheduleJob(job, trigger1);
+
+        //启动之
+        scheduler.start();
     }
 }
