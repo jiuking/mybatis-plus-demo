@@ -5,6 +5,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import lombok.Data;
 import netscape.javascript.JSObject;
+import org.springframework.scheduling.annotation.Async;
 
 public class FastJsonTest {
     public static void main(String[] args) {
@@ -14,6 +15,7 @@ public class FastJsonTest {
     }
 }
 @Data
+@Async
 class Person{
     @JSONField(serialzeFeatures = SerializerFeature.WriteNullStringAsEmpty)
     private String name;

@@ -102,6 +102,8 @@ public class Test {
 //        test();
         System.out.println(null == null);
         System.out.println(Objects.equal(null,null));
+
+        System.out.println("asdf4".length() > 4?"asdf4".substring(0,4):"s");
     }
     /**
      * Description: 内部学生类<br>
