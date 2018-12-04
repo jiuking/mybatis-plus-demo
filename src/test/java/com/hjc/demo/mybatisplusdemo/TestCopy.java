@@ -2,7 +2,6 @@ package com.hjc.demo.mybatisplusdemo;
 
 import org.springframework.beans.BeanUtils;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
